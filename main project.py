@@ -1,7 +1,8 @@
 import time  # For adding delays between text outputs
 import random  # For generating random outcomes
 
-#Print a message and pause for 1 second for better reading pace.
+
+# Print a message and pause for 1 second for better reading pace.
 def print_pause(message):
     print(message)
     time.sleep(1)
@@ -12,17 +13,19 @@ def display_intro():
     print_pause('You find yourself at the edge of a mysterious forest.')
     print_pause('Legends say a treasure lies hidden deep within...')
 
-#Prompt the player to choose a path and validate their input.
+
+# Prompt the player to choose a path and validate their input.
 def choose_path():
     while True:
-        prompt = ("Do you go into the left path or the right path? "
-                  "(left/right) \n> ")
+        prompt = ('Do you go into the left path or the right path? '
+                  '(left/right) \n> ')
         choice = input(prompt).strip().lower()
         if choice in ('left', 'right'):
             return choice
-        print("Invalid choice. Please type 'left' or 'right'.")
+        print('Invalid choice. Please type left or right.')
 
-#Generate a random character encounter based on the chosen path.
+
+# Generate a random character encounter based on the chosen path.
 def encounter_character(path):
     characters = {
         'left': ['a friendly elf', 'a sneaky goblin'],
@@ -44,14 +47,15 @@ def encounter_character(path):
     print_pause('They attack you! You lose health and drop some gold.')
     return -5
 
-#Update and display the player's score.
-def update_score(total_score, change):
 
+# Update and display the player's score.
+def update_score(total_score, change):
     total_score += change
     print_pause(f'Score change: {change:+}. Total score: {total_score}.')
     return total_score
 
 
+# Check if the game should end based on score or turn count.
 def check_game_over(total_score, turns, max_turns=5):
     if total_score < 0:
         print_pause('Your score fell below zero. You have failed your quest.')
@@ -85,7 +89,7 @@ def main():
             cont = input(prompt).strip().lower()
             if cont in ('yes', 'no'):
                 break
-            print("Invalid input. Please type 'yes' or 'no'.")
+            print('Invalid input. Please type yes or no.')
         if cont == 'no':
             print_pause('You decide to end your adventure. Farewell!')
             break
@@ -98,7 +102,7 @@ def main():
         replay = input('Play again? (yes/no) \n> ').strip().lower()
         if replay in ('yes', 'no'):
             break
-        print("Invalid input. Please type 'yes' or 'no'.")
+        print('Invalid input. Please type yes or no.')
 
     if replay == 'yes':
         print_pause('Restarting game...')
